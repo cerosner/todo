@@ -1,27 +1,36 @@
-# UI Specifications
+# Specification Documentation
 
-## 01.00 Home Page
-### 01.01 Input Section
-- Text Input Bar
-  01. Allows users to type a new list item.
-  02. Placeholder text: "Enter a new item..."
-  03. Prevents adding an empty item (disable button if input is empty).
-- Add Button
-  01. Clicking adds text in the input bar as a new list item.
-  02. Button is disabled if the input field is empty.
-### 01.02 List Items Section
-- List Item Elements
-  01. Each list item consists of:
-  02. Text (Clickable to open update confirmation)
-  03. Update Icon (🖊️)
-  04. Trash Icon (🗑️)
-### 01.03 Update Confirmation Dialog
-- Trigger: Clicking on the list item text or update icon.
-- Dialog Options:
-  ✅ Confirm Update: Marks the list item as DONE (applies visual changes).
-  ❌ Cancel: Closes the dialog without changes.
-### 01.04 Delete Confirmation Dialog
-Trigger: Clicking the trash icon.
-Dialog Options:
-  ✅ Confirm Delete: Removes the item from the list.
-  ❌ Cancel: Closes the dialog without changes.
+## 2.1 Technology Stack
+- Frontend: HTML, CSS, JavaScript.
+Storage: LocalStorage.
+Testing: Cypress.
+
+## 2.2 System Requirements
+- Must run on any modern web browser.
+- Tasks persist via LocalStorage.
+- Lightweight and fast (<1s response time for user actions).
+
+## 2.3 LocalStorage Data Structure
+LocalStorage stores tasks as a JSON array under the key `"tasks"`:
+```
+[
+  {
+    "id": "unique-task-id",
+    "title": "Buy groceries",
+    "description": "Milk, eggs, bread",
+    "completed": false
+  }
+]
+```
+LocalStorage Operations:
+- Create a Task: Add a new task object to the array and update LocalStorage.
+- Edit a Task: Find the task by `id`, update properties, and save back.
+- Delete a Task: Remove the task by `id` and update LocalStorage.
+Toggle Completion: Update `completed` status and save.
+
+## 2.4 User Interface (UI) Wireframe
+- Header: App title.
+- Main Section:
+  - Task input field (title).
+  - Task list (showing title and completion status).
+- Buttons: Add, Edit, Delete, Complete (toggle).
